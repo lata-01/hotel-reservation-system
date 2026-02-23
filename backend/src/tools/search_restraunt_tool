@@ -1,0 +1,25 @@
+from langchain_core.tools import BaseTool
+from typing import Type
+from pydantic import BaseModel, Field
+from src.vectorstore.chroma_store import get_vectorstore
+
+
+class SearchRestaurantInput(BaseModel):
+    query: str = Field(description="User query about restaurant")
+
+
+class SearchRestaurantTool(BaseTool):
+    name: str = "search_restaurant"
+    description: str = "Search restaurant knowledge like cuisine, price, location, ambience"
+    args_schema: Type[BaseModel] = SearchRestaurantInput
+
+    def _run(self, query: str):
+
+        vectorstore = get_vectorstore()
+
+        docs = vectorstore.similarity_search(query, k=3)
+
+        if not docs:
+            return "No relevant restaurants found."
+
+        return "\n\n".join([doc.page_content for doc in docs])
