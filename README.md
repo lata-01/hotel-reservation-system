@@ -33,7 +33,7 @@ This is a true **Agentic System** using the ReAct pattern:
 
 # ⚙️ Setup Instructions
 
-## 1️⃣ Clone Repository
+## 1️ Clone Repository
 
 ```bash
 git clone <your-repo-url>
@@ -48,7 +48,7 @@ AZURE_API_VERSION=2024-12-01-preview
 
 AZURE_DEPLOYMENT=gpt-4o-mini
 
-🚀 Run the Application
+## 2🚀 Run the Application
 
 Start FastAPI:
 
@@ -57,7 +57,7 @@ uvicorn src.main:app --reload
 Server runs at:
 
 http://127.0.0.1:8000
-🧪 API Endpoint
+## 3🧪 API Endpoint
 POST
 /api/v1/agent/chat
 Example Request
@@ -76,7 +76,7 @@ Save booking if seats available
 
 Offer waiting list if full
 
-#🗄️ Database Schema
+##🗄️ Database Schema
 Hotels
 
 name
@@ -117,7 +117,7 @@ user_name
 
 mobile_number
 
-#🧠 Agent Capabilities
+##🧠 Agent Capabilities
 
 ✔ Multi-step reasoning
 ✔ Tool selection (ReAct pattern)
@@ -126,7 +126,7 @@ mobile_number
 ✔ Waiting list management
 ✔ Streaming response handling
 
-#🛠️ Common Issues
+##🛠️ Common Issues
 ❌ 404 DeploymentNotFound
 
 Check Azure deployment name
@@ -140,7 +140,7 @@ Confirm deployment status is "Succeeded"
 Run scripts using:
 
 python -m src.some_module
-#🚀 Future Improvements
+##🚀 Future Improvements
 
 Add RAG-based restaurant search
 
