@@ -1,79 +1,99 @@
 # 🍽️ Agentic AI Restaurant Table Booking System
 
-An Agentic AI-powered restaurant reservation system built using:
+A full-stack Agentic AI-powered restaurant reservation system built using:
+
+## 🔹 Backend
 
 * ⚡ FastAPI
 * 🧠 Azure OpenAI (Chat Model)
-* 🔁 LangGraph (ReAct Agent Orchestration)
+* 🔁 LangGraph (ReAct Agent)
 * 🗄️ SQLite (Bookings & Waiting List)
-* 🌐 Streaming API Responses
+* 🌐 Streaming API responses
 
-This system allows users to:
+## 🔹 Frontend
 
-* Check real-time table availability
-* Book tables
-* Join waiting list when fully booked
-* Interact with an AI agent using natural language
-* Receive streaming responses with tool execution details
+* ⚛️ React
+* 🔄 Real-time streaming display
+* 💬 Interactive chat interface
 
 ---
 
-# 🏗️ Architecture
-
-This is a true **Agentic System** using the ReAct pattern:
-
-1. The model reasons about the request
-2. Decides which tool to call
-3. Executes the tool
-4. Uses the result to continue reasoning
-5. Returns final response
+# 🏗️ System Architecture
 
 ```
-User → FastAPI → LangGraph ReAct Agent
-                         ↓
-     -----------------------------------------
-     | Current Date Tool                     |
-     | Check Availability Tool (SQLite)      |
-     | Save Booking Tool (SQLite)            |
-     | Join Waiting List Tool (SQLite)       |
-     -----------------------------------------
-                         ↓
-                  Azure OpenAI (Chat Model)
+Frontend (React)
+        ↓
+FastAPI Backend
+        ↓
+LangGraph ReAct Agent
+        ↓
+-----------------------------------------
+| Current Date Tool                     |
+| Check Availability Tool (SQLite)      |
+| Save Booking Tool (SQLite)            |
+| Join Waiting List Tool (SQLite)       |
+-----------------------------------------
+        ↓
+Azure OpenAI (Chat Model)
+```
+
+---
+
+# 📁 Project Structure
+
+```
+project-root/
+│
+├── backend/
+│   ├── src/
+│   ├── main.py
+│   └── ...
+│
+├── frontend/
+│   ├── src/
+│   ├── package.json
+│   └── ...
+│
+└── README.md
 ```
 
 ---
 
 # ⚙️ Setup Instructions
 
-## 1️⃣ Clone Repository
+## 🔹 1️⃣ Clone Repository
 
 ```bash
 git clone <your-repo-url>
-cd backend
+cd project-root
 ```
 
 ---
 
-## 2️⃣ Create Virtual Environment
+# 🧠 Backend Setup
+
+## 2️⃣ Navigate to Backend
+
+```bash
+cd backend
+```
+
+## 3️⃣ Create Virtual Environment
 
 ```bash
 python -m venv venv
 venv\Scripts\activate   # Windows
 ```
 
----
-
-## 3️⃣ Install Dependencies
+## 4️⃣ Install Dependencies
 
 ```bash
 pip install fastapi uvicorn langchain langchain-openai langgraph
 ```
 
----
+## 5️⃣ Create `.env` File
 
-## 4️⃣ Create `.env` File
-
-Create a `.env` file in the backend root directory:
+Create a `.env` file inside `backend/`:
 
 ```
 AZURE_ENDPOINT=https://your-resource-name.openai.azure.com/
@@ -82,19 +102,25 @@ AZURE_API_VERSION=2024-12-01-preview
 AZURE_DEPLOYMENT=gpt-4o-mini
 ```
 
-⚠ Use your actual Azure deployment name.
+⚠ Make sure deployment name matches Azure.
 
 ---
 
-# 🚀 Run the Application
+## 6️⃣ Run Backend
 
-Start FastAPI:
+From `backend/` folder:
+
+```bash
+python main.py
+```
+
+OR
 
 ```bash
 uvicorn src.main:app --reload
 ```
 
-Server runs at:
+Backend runs at:
 
 ```
 http://127.0.0.1:8000
@@ -102,15 +128,67 @@ http://127.0.0.1:8000
 
 ---
 
+# 💻 Frontend Setup (React)
+
+## 7️⃣ Navigate to Frontend
+
+Open new terminal:
+
+```bash
+cd frontend
+```
+
+## 8️⃣ Install Node Dependencies
+
+```bash
+npm install
+```
+
+## 9️⃣ Run Frontend
+
+```bash
+npm run dev
+```
+
+Frontend runs at:
+
+```
+http://localhost:3000
+```
+
+---
+
+# 🚀 How to Run Full System
+
+### Terminal 1
+
+```
+cd backend
+uvicorn src.main:app --reload
+```
+
+### Terminal 2
+
+```
+cd frontend
+npm run dev
+```
+
+Then open:
+
+```
+http://localhost:3000
+```
+
+---
+
 # 🧪 API Endpoint
 
-### POST
-
 ```
-/api/v1/agent/chat
+POST /api/v1/agent/chat
 ```
 
-### Example Request
+Example Request:
 
 ```json
 {
@@ -154,11 +232,11 @@ http://127.0.0.1:8000
 # 🧠 Agent Capabilities
 
 ✔ Multi-step reasoning
-✔ Dynamic tool selection (ReAct pattern)
+✔ Tool selection (ReAct pattern)
 ✔ Real-time database interaction
 ✔ Capacity conflict handling
 ✔ Waiting list management
-✔ Streaming response handling
+✔ Streaming responses to frontend
 
 ---
 
@@ -167,27 +245,24 @@ http://127.0.0.1:8000
 ### ❌ 404 DeploymentNotFound
 
 * Check Azure deployment name
-* Ensure correct `.env` configuration
-* Confirm deployment status is **Succeeded**
+* Verify `.env`
+* Confirm deployment status is "Succeeded"
 
-### ❌ ModuleNotFoundError: src
+### ❌ CORS Errors
 
-Run scripts using:
-
-```bash
-python -m src.module_name
-```
+Make sure FastAPI CORS middleware allows frontend origin.
 
 ---
 
-# 🚀 Future Improvements
+# 🔮 Future Improvements
 
 * Add RAG-based restaurant search
-* Add booking cancellation tool
-* Add metadata filtering
-* Add async database operations
-* Add frontend dashboard
-* Add notifications system
-* Convert to multi-agent architecture
+* Add booking cancellation
+* Add user authentication
+* Add admin dashboard
+* Add notification system
+* Convert to multi-agent system
 
 ---
+
+
