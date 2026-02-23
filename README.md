@@ -1,11 +1,3 @@
-Perfect 👍 I’ll clean, format, and correct your README properly.
-
-Also — since you said earlier you are **not using RAG**, I’ll remove ChromaDB + Embeddings to keep it accurate and professional.
-
-Here is the fixed, clean version 👇
-
----
-
 # 🍽️ Agentic AI Restaurant Table Booking System
 
 An Agentic AI-powered restaurant reservation system built using:
@@ -199,13 +191,3 @@ python -m src.module_name
 * Convert to multi-agent architecture
 
 ---
-
-If you want, I can now:
-
-* Make it more resume-friendly
-* Make it recruiter-optimized
-* Write a LinkedIn post
-* Add architecture diagram
-* Or help you upgrade it to proper RAG
-
-Tell me what you want next 🚀
